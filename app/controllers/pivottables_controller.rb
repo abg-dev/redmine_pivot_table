@@ -61,6 +61,15 @@ class PivottablesController < ApplicationController
 
       # Exclude description
       @query.available_columns.delete_if { |querycolumn| querycolumn.name == :description }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :done_ratio }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :subject }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :updated_on }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :closed_on }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :start_date }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :due_date }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :last_updated_by }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :attachment }
+      @query.available_columns.delete_if { |querycolumn| querycolumn.name == :is_private }
 
       if (params[:closed] == "1")
           @query.add_filter("status_id", "*", [''])

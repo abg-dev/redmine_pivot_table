@@ -141,7 +141,10 @@ $(document).ready(function(){
                 <%= raw @rows == nil ? %|rows: ["#{pv_caption(:fixed_version)}", "#{pv_caption(:assigned_to)}"],| : %|rows: ["#{@rows.join('","')}"],| %>
                 <%= raw @cols == nil ? %|cols: ["#{pv_caption(:status)}"],| : %|cols: ["#{@cols.join('","')}"],| %>
               <% end %>
-              unusedAttrsVertical: false
+              unusedAttrsVertical: false,
+              hiddenAttributes: ["ID","Last notes","Created","Related issues","Files", "Parent task", "Parent task subject"],
+              hiddenFromDragDrop: ["Last notes","Total estimated time","Estimated time","Total spent time"],
+              hiddenFromAggregators: ["Project","Tracker","Status","Priority","Author","Assignee","Category","Target version","Tags","Root Cause"]
            }, false, "<%= @language %>");
 
 　　$("#output").click(function(e){
@@ -164,7 +167,10 @@ function clear_attr(){
                            onRefresh: update_url,
                            rows: [],
                            cols: [],
-                           unusedAttrsVertical: false
+                           unusedAttrsVertical: false,
+                           hiddenAttributes: ["ID","Last notes","Created","Related issues","Files", "Parent task", "Parent task subject"],
+                           hiddenFromDragDrop: ["Last notes","Total estimated time","Estimated time","Total spent time"],
+                           hiddenFromAggregators: ["Project","Tracker","Status","Priority","Author","Assignee","Category","Target version","Tags","Root Cause"],
                          },
                          true,
                          "<%= @language %>");
